@@ -1,0 +1,88 @@
+paths:
+  /users:
+    post:
+      tags:
+        - User
+      summary: Creates a new user
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: Create User
+          required: false
+          schema:
+            $ref: "#/definitions/createUser"
+      responses:
+        201:
+          description: An object with user details
+    get:
+      tags:
+        - User
+      summary: Get all users
+      produces:
+        - application/json
+      responses:
+        201:
+          description: Array of objects of Users
+  /users/{id}:
+    get:
+      tags:
+        - User
+      summary: Get One User
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          required: false
+          schema:
+            type: integer
+      responses:
+        201:
+          description: Object of user
+    put:
+      tags:
+        - User
+      summary: Update One User
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          required: false
+          schema:
+            type: integer
+        - in: body
+          name: Update User
+          required: false
+          schema:
+            $ref: "#/definitions/createUser"
+      responses:
+        201:
+          description: Object of user
+    delete:
+      tags:
+        - User
+      summary: Delete One User
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          required: false
+          schema:
+            type: integer
+      responses:
+        201:
+          description: Object of user
+
+definitions:
+  createUser:
+    type: object
+    properties:
+      name:
+        type: string
+      hobbies:
+        type: array
+        items: 
+          type: string

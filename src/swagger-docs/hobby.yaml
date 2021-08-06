@@ -1,0 +1,88 @@
+paths:
+  /hobby:
+    post:
+      tags:
+        - Hobby
+      summary: Creates a new Hobby
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: Create Hobby
+          required: false
+          schema:
+            $ref: "#/definitions/createHobby"
+      responses:
+        201:
+          description: An object with hobby details
+    get:
+      tags:
+        - Hobby
+      summary: Get All Hobbies
+      produces:
+        - application/json
+      responses:
+        201:
+          description: Array of objects of hobbies
+  /hobby/{id}:
+    get:
+      tags:
+        - Hobby
+      summary: Get One Hobby
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          required: false
+          schema:
+            type: integer
+      responses:
+        201:
+          description: Object of hobby
+    put:
+      tags:
+        - Hobby
+      summary: Update One Hobby
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          required: false
+          schema:
+            type: integer
+        - in: body
+          name: Update Hobby
+          required: false
+          schema:
+            $ref: "#/definitions/createHobby"
+      responses:
+        201:
+          description: Object of hobby
+    delete:
+      tags:
+        - Hobby
+      summary: Delete One Hobby
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          required: false
+          schema:
+            type: integer
+      responses:
+        201:
+          description: Object of hobby
+
+definitions:
+  createHobby:
+    type: object
+    properties:
+      name:
+        type: string
+      year:
+        type: number
+      passionLevel:
+        type: string
